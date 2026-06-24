@@ -17,14 +17,14 @@
 
 class ToDoListTable:
 
-    NAME = "ThingsToDo"
+    NAME = "TasksToDo"
 
     SCHEMA = """
-        CREATE TABLE ThingsToDo (
+        CREATE TABLE TasksToDo (
             id        INTEGER PRIMARY KEY AUTOINCREMENT,
             name      TEXT NOT NULL,
-            priority  INTEGER NOT NULL DEFAULT 3
-            complete  INTEGER NOT NULL DEFAULT 0
+            priority  INTEGER NOT NULL DEFAULT 3,
+            complete  BOOLEAN (INTEGER) NOT NULL DEFAULT 0
         )
     """
 
@@ -57,7 +57,7 @@ class ToDoListTable:
 #----------------------------------------------------------------------------
 
 TABLES = [
-    CreatureTable,
+    ToDoListTable,
     # Add more tables here...
 ]
 
