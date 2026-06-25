@@ -2,7 +2,6 @@
 # Database schema and seed data configuration
 #============================================================================
 
-
 #----------------------------------------------------------------------------
 # Table definitions
 #----------------------------------------------------------------------------
@@ -24,12 +23,12 @@ class ToDoListTable:
             id        INTEGER PRIMARY KEY AUTOINCREMENT,
             name      TEXT NOT NULL,
             priority  INTEGER NOT NULL DEFAULT 3,
-            complete  BOOLEAN (INTEGER) NOT NULL DEFAULT 0
+            complete  INTEGER NOT NULL DEFAULT 0
         )
     """
 
     SEED_DATA = """
-        INSERT INTO ThingsToDo (complete, priority, name)
+        INSERT INTO TasksToDo (complete, priority, name)
         VALUES
             ("0",  "5", "Eat food"),
             ("0", "3", "Drink water"),
