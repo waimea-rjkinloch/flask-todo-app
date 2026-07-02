@@ -7,7 +7,36 @@
 
 {% block content %}
 
-    <h1 class="welcome">To Do List</h1>
+    <h2>Things That Need Doing</h1>
 
+        <section id="Tasks">
+
+        {% for TaskToDo in TasksToDo %}
+
+            <div class="TasksToDo">
+                <span class ="checkbox">
+                {% if TasksToDo.complete %}
+                    🗹
+                {% else %} 
+                    <a href="/TasksToDo/{{ TaskToDo.id }}/complete">☐</a>
+                {% endif %}
+                </span>
+                <span class ="priority">{{ TaskToDo.priority }}</span>
+                <span class="name">{{ TaskToDo.name }}</span>
+            </div>
+
+        {% else %}
+
+            <p>No Tasks to do!</p>
+
+        {% endfor %}
+
+
+    </section>
+
+    <section id ="AddTasks">
+
+    </section>
 {% endblock %}
+
 

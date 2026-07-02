@@ -21,28 +21,47 @@ app = Flask(__name__)
 #===========================================================
 
 #-----------------------------------------------------------
-# Welcome page
+# Home Page
 #-----------------------------------------------------------
 @app.get("/")
 def show_welcome():
-    return render_template("pages/welcome.jinja")
-
-
-#-----------------------------------------------------------
-# Creature list page - Show all the creatures
-#-----------------------------------------------------------
-@app.get("/creatures")
-def show_all_creatures():
     with connect_db() as db:
         sql = """
-            SELECT id, species, name
-            FROM creatures
+            SELECT id, name, priority, complete
+            FROM TasksToDo
         """
         params = ()
-        creatures = db.execute(sql, params).fetchall()
+        TasksToDo = db.execute(sql, params).fetchall()
+        return render_template("pages/home.jinja", TasksToDo=TasksToDo)
 
-        return render_template("pages/creature_list.jinja", creatures=creatures)
 
+#-----------------------------------------------------------
+# Handle The Task Form Data
+#-----------------------------------------------------------
+@app.post("/Task/new")
+def process_creature_form():
+    # Get the form data
+    species = request.form.get("species", "unknown").strip()
+    name = request.form.get("name", "unknown").strip()
+
+    # Connect to the db
+    with connect_db() as db:
+
+        sql = """
+
+                INSERT INTO creatures (species,name)
+                VALUES (?, ?)
+
+        """
+        params = (species, name)
+
+        #  Run the query
+        db.execute(sql, params)
+
+        flash(f"Creature {name} added successfully")
+
+        # We're done, so back to the list
+        return redirect("/creatures")
 
 #-----------------------------------------------------------
 # Help page - Show some help

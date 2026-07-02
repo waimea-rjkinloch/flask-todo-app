@@ -4,14 +4,14 @@
 ===========================================================*/
 
 :root {
-    --text-col:         #244;
+    --text-col:         rgb(179, 7, 7);
 
-    --back-col:         #dff;
-    --back-col-dark:    #bdd;
+    --back-col:         rgb(238, 174, 0);
+    --back-col-dark:    rgb(235, 127, 26);
 
-    --border-col:       #355;
+    --border-col:       rgb(245, 185, 145);
 
-    --accent-col:       #e43;
+    --accent-col:       rgb(146, 51, 27);
 }
 
 
@@ -69,9 +69,9 @@ body > header {
 /* Page Headings -----------------------------------------------*/
 
 main > h1.welcome {
-    font-size: 5rem;
+    font-size: 3rem;
     text-align: center;
-    margin-block: 5rem;
+    margin-block: 2rem;
 }
 
 
@@ -84,7 +84,7 @@ main > h2 {
 
 /* Creature List --------------------------------------------------*/
 
-#creatures {
+#Tasks {
     display: grid;
     gap: 2rem;
     grid-template-columns: 1fr;
@@ -97,17 +97,37 @@ main > h2 {
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .creature {
+    .TasksToDo {
         padding: 1rem;
-
+        gap: 1rem;
         background-color: var(--back-col-dark);
         border: 2px solid var(--border-col);
         border-radius: 0.5rem;
+        display:flex;
+        align-items: center;
 
-        h3 {
+        span.checkbox {
+            font-size: 1.5rem;
+            
+            a{
+                text-decoration: none;
+                color:green;
+            }
+        }
+        span.name {
             color: var(--accent-col);
+            Font-size:1.15rem;
+            Font-weight:500;
+            
+        }
+        span.priority {
+            color: var(--accent-col);
+            font-size:1.2rem;
+            font-weight:1000;
+            
         }
     }
+
 }
 
 

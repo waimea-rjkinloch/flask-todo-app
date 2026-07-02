@@ -30,9 +30,9 @@ class ToDoListTable:
     SEED_DATA = """
         INSERT INTO TasksToDo (complete, priority, name)
         VALUES
-            ("0",  "5", "Eat food"),
+            ("1",  "5", "Eat food"),
             ("0", "3", "Drink water"),
-            ("0", "1", "Sleep")
+            ("1", "1", "Sleep")
 
     """
 
